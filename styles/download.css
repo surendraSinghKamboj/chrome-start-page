@@ -1,0 +1,106 @@
+/* popup.css */
+.download-widget {
+  font-family: 'Segoe UI', sans-serif;
+  width: 340px;
+  max-height: 450px;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+  padding: 1rem;
+  overflow-y: auto;
+  position: relative;
+}
+
+.download-widget::-webkit-scrollbar {
+  width: 8px;
+}
+.download-widget::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.download-widget h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.download-item {
+  border-bottom: 1px solid #e0e0e0;
+  padding: 12px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.download-item:last-child {
+  border-bottom: none;
+}
+
+.filename {
+  font-weight: 600;
+  font-size: 14px;
+  color: #333;
+  word-break: break-word;
+}
+
+.progress-bar {
+  width: 100%;
+  background-color: #e0e0e0;
+  border-radius: 6px;
+  overflow: hidden;
+  height: 10px;
+}
+
+.progress {
+  height: 100%;
+  background-color: #00b894;
+  width: 0%;
+  transition: width 0.3s ease-in-out;
+}
+
+.speed-time {
+  font-size: 12px;
+  color: #666;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 5px;
+}
+
+.actions button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: #555;
+  transition: color 0.2s ease-in-out;
+}
+
+.actions button:hover {
+  color: #000;
+}
+
+.actions i {
+  pointer-events: none;
+}
+
+.expand-btn {
+  position: sticky;
+  bottom: 0;
+  background: #f9f9f9;
+  padding: 0.6rem;
+  text-align: center;
+  border-top: 1px solid #ddd;
+  cursor: pointer;
+  font-weight: 500;
+  color: #007acc;
+  font-size: 14px;
+  transition: background-color 0.2s ease;
+}
+
+.expand-btn:hover {
+  background-color: #eaeaea;
+}

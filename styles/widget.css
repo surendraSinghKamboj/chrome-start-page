@@ -1,0 +1,364 @@
+/* Base Styles */
+:root {
+  --primary-bg: #1e1e2f;
+  --secondary-bg: #2c2c44;
+  --text-color: #e0e0e0;
+  --accent-color: #ff9500;
+  --success-color: #00b894;
+  --danger-color: #ff3b30;
+  --info-color: #007aff;
+  --border-radius: 12px;
+  --box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+  --font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  --transition: all 0.3s ease;
+}
+
+[data-theme="light"] {
+  --primary-bg: #f5f7fa;
+  --secondary-bg: #ffffff;
+  --text-color: #333333;
+  --box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Widget Container */
+.widgets-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+  padding: 25px;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  align-items: start;
+}
+
+/* Common Widget Styles */
+.history-widget,
+.download-widget,
+.weather-widget {
+  background: var(--secondary-bg);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  padding: 20px;
+  color: var(--text-color);
+  transition: var(--transition);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* History Widget */
+.history-widget {
+  max-height: 600px;
+  overflow: hidden;
+}
+
+.history-widget .header {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+  margin-bottom: 15px;
+  align-items: center;
+}
+
+.history-widget #searchInput {
+  grid-column: span 2;
+}
+
+.history-widget #startDate,
+.history-widget #endDate {
+  grid-column: span 1;
+}
+
+.history-widget #exportBtn,
+.history-widget #clearBtn {
+  padding: 8px;
+  border-radius: 6px;
+  background: var(--accent-color);
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.history-widget #exportBtn:hover,
+.history-widget #clearBtn:hover {
+  opacity: 0.9;
+}
+
+#historyList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  overflow-y: auto;
+  flex-grow: 1;
+}
+
+#historyList li {
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transition: var(--transition);
+}
+
+[data-theme="light"] #historyList li {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+#historyList li:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+[data-theme="light"] #historyList li:hover {
+  background: rgba(0, 0, 0, 0.03);
+}
+
+#historyList li a {
+  color: var(--accent-color);
+  text-decoration: none;
+  font-weight: 500;
+  display: block;
+  margin-bottom: 4px;
+  word-break: break-word;
+}
+
+#historyList li small {
+  color: var(--text-color);
+  opacity: 0.7;
+  font-size: 12px;
+}
+
+.theme-toggle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0 0;
+  margin-top: 15px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="light"] .theme-toggle {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.theme-toggle label {
+  cursor: pointer;
+}
+
+/* Download Widget */
+.download-widget {
+  max-height: 600px;
+  overflow: hidden;
+}
+
+.download-item {
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transition: var(--transition);
+}
+
+[data-theme="light"] .download-item {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.filename {
+  font-weight: 500;
+  margin-bottom: 8px;
+  word-break: break-word;
+}
+
+.progress-bar {
+  height: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  margin-bottom: 8px;
+  overflow: hidden;
+}
+
+[data-theme="light"] .progress-bar {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.progress {
+  height: 100%;
+  background: var(--success-color);
+  transition: width 0.3s ease;
+}
+
+.speed-time {
+  font-size: 12px;
+  opacity: 0.8;
+  margin-bottom: 8px;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+}
+
+.actions button {
+  background: none;
+  border: none;
+  color: var(--text-color);
+  opacity: 0.7;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.actions button:hover {
+  opacity: 1;
+  color: var(--accent-color);
+}
+
+/* Weather Widget */
+.weather-widget {
+  max-height: 600px;
+}
+
+.digitalclock {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 15px;
+  color: var(--accent-color);
+  background: var(--secondary-bg);
+  padding: 15px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+}
+
+.weather-widget h3 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: var(--accent-color);
+  text-align: center;
+}
+
+.settings {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.settings input {
+  padding: 10px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.1);
+  color: var(--text-color);
+  transition: var(--transition);
+}
+
+[data-theme="light"] .settings input {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: rgba(0, 0, 0, 0.03);
+}
+
+.settings input:focus {
+  outline: none;
+  border-color: var(--accent-color);
+}
+
+#saveSettings {
+  padding: 10px;
+  background: var(--accent-color);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+#saveSettings:hover {
+  opacity: 0.9;
+}
+
+.weather-info div {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+  .widgets-container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .widgets-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .history-widget .header {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .history-widget #searchInput {
+    grid-column: span 2;
+  }
+  
+  .digitalclock {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .history-widget .header {
+    grid-template-columns: 1fr;
+  }
+  
+  .history-widget #searchInput {
+    grid-column: span 1;
+  }
+  
+  .digitalclock {
+    font-size: 1.8rem;
+  }
+  
+  .widgets-container {
+    padding: 15px;
+    gap: 15px;
+  }
+}
+
+.history-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.history-item a {
+  flex-grow: 1;
+  margin-right: 10px;
+}
+
+.history-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.history-actions button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #666;
+  padding: 4px;
+}
+
+.history-actions button:hover {
+  color: #333;
+}
+
+.dark-mode .history-actions button {
+  color: #aaa;
+}
+
+.dark-mode .history-actions button:hover {
+  color: #fff;
+}

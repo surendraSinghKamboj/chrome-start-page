@@ -1,0 +1,85 @@
+/* Container styling */
+.search-container {
+  max-width: 500px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Input and button layout */
+.search-container input[type="text"] {
+  width: calc(100% - 110px);
+  padding: 10px 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px 0 0 8px;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.search-container input[type="text"]:focus {
+  border-color: #5e9ed6;
+}
+
+/* Search button */
+.search-container .search-btn {
+  padding: 10px 20px;
+  border: none;
+  background-color: #3498db;
+  color: white;
+  font-size: 16px;
+  border-radius: 0 8px 8px 0;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.search-container .search-btn:hover {
+  background-color: #2980b9;
+}
+
+/* Radio buttons */
+.radio-group {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.radio-group label {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: #ffffff;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.radio-group input[type="radio"] {
+  accent-color: #3498db;
+}
+
+.radio-group label:hover {
+  background-color: #f0f8ff;
+  border-color: #3498db;
+}
+
+.search-input-wrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+  gap: 0.5rem;
+}
+
+#engine-logo {
+  width: 24px;
+  height: 24px;
+  margin-left: 0.3rem;
+  border-radius: 4px;
+  object-fit: contain;
+}

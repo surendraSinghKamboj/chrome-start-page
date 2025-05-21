@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rocket Dashboard</title>
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles/styles.css" />
+    <link rel="stylesheet" href="styles/calculator.css" />
+    <link rel="stylesheet" href="styles/searchbar.css" />
+    <!-- <link rel="stylesheet" href="styles/download.css" /> -->
+    <!-- <link rel="stylesheet" href="styles/weather.css" /> -->
+    <!-- <link rel="stylesheet" href="styles/history.css"> -->
+    <link rel="stylesheet" href="styles/widget.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap");
+
+      .digitalclock {
+        font-family: "Orbitron", sans-serif;
+        font-size: 2.5rem;
+        width: full;
+        text-align: center;
+        padding: 1rem 0rem;
+        color: #00ffcc;
+        background-color: #ae3dfa;
+        border-radius: 12px;
+        box-shadow: 0 8px 16px rgba(0, 255, 204, 0.2);
+        margin: 0 auto;
+        letter-spacing: 2px;
+        user-select: none;
+      }
+    </style>
+    <script
+      src="https://kit.fontawesome.com/a076d05399.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <!-- Context Menu -->
+    <div class="context">
+      <div id="context-theme" class="context-menu-option">Themes</div>
+      <div id="context-settings" class="context-menu-option">Settings</div>
+      <div id="context-calculator" class="context-menu-option">Calculator</div>
+      <div id="context-widgets" class="context-menu-option">Widgets</div>
+      <div id="context-help" class="context-menu-option">Help</div>
+      <div id="context-about" class="context-menu-option">About Us</div>
+    </div>
+    <!-- Themes Menu -->
+    <div class="theme theme-container">
+      <div class="theme-menu-option">Purple</div>
+      <div class="theme-menu-option">Green</div>
+      <div class="theme-menu-option">Dark</div>
+      <div class="theme-menu-option">Light</div>
+      <div class="theme-menu-option">Classic</div>
+      <div class="theme-menu-option">Pink</div>
+      <button id="theme-close" class="theme-close-btn" aria-label="Close">
+        &times;
+      </button>
+    </div>
+
+    <!-- Calculator Code Start -->
+    <div class="calculator calculator-container">
+      <div class="display" id="display">0</div>
+      <div class="buttons">
+        <button class="btn clear" id="clear">C</button>
+        <button class="btn backspace" id="backspace">⌫</button>
+        <button class="btn operator" data-op="/">÷</button>
+        <button class="btn operator" data-op="*">×</button>
+
+        <button class="btn number" data-num="7">7</button>
+        <button class="btn number" data-num="8">8</button>
+        <button class="btn number" data-num="9">9</button>
+        <button class="btn operator" data-op="-">−</button>
+
+        <button class="btn number" data-num="4">4</button>
+        <button class="btn number" data-num="5">5</button>
+        <button class="btn number" data-num="6">6</button>
+        <button class="btn operator" data-op="+">+</button>
+
+        <button class="btn number" data-num="1">1</button>
+        <button class="btn number" data-num="2">2</button>
+        <button class="btn number" data-num="3">3</button>
+        <button class="btn equal" id="equals">=</button>
+
+        <button class="btn zero number" data-num="0">0</button>
+        <button class="btn decimal" id="decimal">.</button>
+      </div>
+      <button
+        id="calculator-close"
+        class="calculator-close-btn"
+        aria-label="Close"
+      >
+        &times;
+      </button>
+    </div>
+    <!-- Calculator Code End -->
+
+    <!-- Main Container -->
+    <div class="container">
+      <!-- Search Bar Code Start -->
+      <div class="search-container">
+        <div class="search-input-wrapper">
+          <img id="engine-logo" src="" alt="Engine Logo" />
+          <input type="text" id="Search" placeholder="Search..." />
+          <button id="search-btn" class="search-btn">Search</button>
+        </div>
+
+        <div class="radio-group">
+          <label
+            ><input type="radio" name="searchEngine" value="Google" checked />
+            Google</label
+          >
+          <label
+            ><input type="radio" name="searchEngine" value="Bing" /> Bing</label
+          >
+          <label
+            ><input type="radio" name="searchEngine" value="DuckDuckGo" />
+            DuckDuckGo</label
+          >
+          <label
+            ><input type="radio" name="searchEngine" value="Yahoo" />
+            Yahoo</label
+          >
+          <label
+            ><input type="radio" name="searchEngine" value="Youtube" />
+            YouTube</label
+          >
+          <label
+            ><input type="radio" name="searchEngine" value="Amazon" />
+            Amazon</label
+          >
+        </div>
+      </div>
+      <!-- Search Bar Code End -->
+      <!-- widgets Contaner -->
+      <div class="widgets-container">
+        <!-- History Widgets Code Start -->
+        <div class="history-widget">
+          <div class="header">
+            <input
+              type="text"
+              id="searchInput"
+              placeholder="🔍 Search history..."
+            />
+            <input type="date" id="startDate" />
+            <input type="date" id="endDate" />
+            <button id="exportBtn" title="Export CSV">📤</button>
+            <button id="clearBtn" title="Clear history">🗑</button>
+          </div>
+          <ul id="historyList"></ul>
+          <div class="theme-toggle">
+            <label for="themeSwitch">🌙 Dark Mode</label>
+            <input type="checkbox" id="themeSwitch" />
+          </div>
+        </div>
+        <!-- History Widgets Code end -->
+        <!-- Download History code start -->
+        <div id="downloads" class="download-widget"></div>
+        <!-- Download History code end -->
+        <!-- Weather widget code Start -->
+        <div>
+          <div class="digitalclock"></div>
+          <div class="weather-widget">
+            <h3>Weather Widget</h3>
+            <div class="settings">
+              <input type="text" id="apiKey" placeholder="Enter API Key" />
+              <input
+                type="text"
+                id="location"
+                placeholder="Enter Location (City)"
+              />
+              <button id="saveSettings">Save Settings</button>
+            </div>
+            <div class="weather-info" style="display: none">
+              <div id="locationName"></div>
+              <div id="temperature"></div>
+              <div id="description"></div>
+              <div id="humidity"></div>
+              <div id="wind"></div>
+            </div>
+          </div>
+        </div>
+        <!-- Weather widget code end -->
+      </div>
+    </div>
+    <!-- Scripts -->
+    <script src="scripts/script.js"></script>
+    <script src="scripts/context.js"></script>
+    <script src="scripts/listener.js"></script>
+    <script src="scripts/settings.js"></script>
+    <script src="scripts/calculator.js"></script>
+    <script src="scripts/search.js"></script>
+    <script src="scripts/download.js"></script>
+    <script src="scripts/weather.js"></script>
+    <script src="scripts/copy.js"></script>
+    <script src="scripts/history.js"></script>
+  </body>
+</html>

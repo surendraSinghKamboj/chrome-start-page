@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "name": "Sunnu Dashboard",
+  "version": "1.0",
+  "description": "Custom dashboard as Chrome new tab page",
+  "permissions": ["downloads", "history", "bookmarks"],
+  "host_permissions": ["<all_urls>"],
+  "chrome_url_overrides": {
+    "newtab": "index.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "icons": {
+    "128": "icon.png"
+  }
+}
