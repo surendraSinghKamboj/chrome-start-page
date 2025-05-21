@@ -30,7 +30,7 @@ body[data-font="inter"] {
 
 /* Context Menu */
 
-.context {
+/* .context {
   display: none;
   position: absolute;
   min-width: 180px;
@@ -51,7 +51,198 @@ body[data-font="inter"] {
   border-radius: 4px;
   color: #333;
   font-size: 14px;
+} */
+
+/* Context Menu Styling */
+.context {
+  display: none;
+  position: relative;
+  width: 220px;
+  background: linear-gradient(135deg, #ffffff 0%, #f5f7fa 100%);
+  border-radius: 12px;
+  box-shadow: 
+    0 10px 20px rgba(0, 0, 0, 0.1),
+    0 6px 6px rgba(0, 0, 0, 0.05),
+    inset 0 -1px 1px rgba(255, 255, 255, 0.5);
+  padding: 8px 0;
+  opacity: 0;
+  transform: translateY(-10px) scale(0.95);
+  animation: menuAppear 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  z-index: 1000;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  overflow: hidden;
 }
+
+.context::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #4285f4, #34a853, #fbbc05, #ea4335);
+  animation: rainbowBorder 8s linear infinite;
+}
+
+@keyframes menuAppear {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes rainbowBorder {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+.context-menu-option {
+  position: relative;
+  padding: 12px 20px;
+  margin: 0 8px;
+  border-radius: 8px;
+  color: #333;
+  font-family: 'Segoe UI', Roboto, -apple-system, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.context-menu-option::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(66, 133, 244, 0.1), transparent);
+  transition: all 0.6s ease;
+  z-index: -1;
+}
+
+.context-menu-option:hover {
+  background-color: rgba(66, 133, 244, 0.08);
+  transform: translateX(5px);
+  color: #1a73e8;
+}
+
+.context-menu-option:hover::before {
+  left: 100%;
+}
+
+.context-menu-option:active {
+  transform: scale(0.98);
+}
+
+/* Icon animations */
+.context-menu-option::after {
+  content: '';
+  position: absolute;
+  right: 15px;
+  width: 8px;
+  height: 8px;
+  border-top: 2px solid #ccc;
+  border-right: 2px solid #ccc;
+  transform: rotate(45deg) scale(0);
+  transition: all 0.3s ease;
+  opacity: 0;
+}
+
+.context-menu-option:hover::after {
+  transform: rotate(45deg) scale(1);
+  opacity: 1;
+  border-color: #1a73e8;
+}
+
+/* Specific option colors and icons */
+#context-theme {
+  border-left: 3px solid #fbbc05;
+}
+#context-settings {
+  border-left: 3px solid #4285f4;
+}
+#context-calculator {
+  border-left: 3px solid #34a853;
+}
+#context-widgets {
+  border-left: 3px solid #ea4335;
+}
+#context-help {
+  border-left: 3px solid #9c27b0;
+}
+#context-about {
+  border-left: 3px solid #607d8b;
+}
+
+/* Divider between options */
+.context-menu-option:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 20px;
+  right: 20px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.08), transparent);
+}
+
+/* Ripple effect */
+.context-menu-option {
+  position: relative;
+  overflow: hidden;
+}
+
+.context-menu-option span.ripple {
+  position: absolute;
+  border-radius: 50%;
+  transform: scale(0);
+  animation: ripple 0.6s linear;
+  background-color: rgba(66, 133, 244, 0.2);
+  pointer-events: none;
+}
+
+@keyframes ripple {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .context {
+    background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
+    box-shadow: 
+      0 10px 20px rgba(0, 0, 0, 0.3),
+      0 6px 6px rgba(0, 0, 0, 0.2),
+      inset 0 -1px 1px rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.05);
+  }
+  
+  .context-menu-option {
+    color: #e2e8f0;
+  }
+  
+  .context-menu-option:hover {
+    background-color: rgba(66, 133, 244, 0.15);
+    color: #8ab4f8;
+  }
+  
+  .context-menu-option:not(:last-child)::after {
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+  }
+}
+
+/* Add this JavaScript to make the ripple effect work */
+
 
 /* Main Container */
 
@@ -151,4 +342,54 @@ body[data-font="inter"] {
   justify-content: center;
   gap: 1rem;
   padding: 1rem;
+}
+
+
+
+.history-widget {
+  max-width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+.history-widget .header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.history-widget .header input[type="text"],
+.history-widget .header input[type="date"] {
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  flex: 1 1 150px;
+  min-width: 100px;
+}
+
+.history-widget .header button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.history-widget .header button:hover {
+  background-color: #45a049;
+}
+
+.history-widget .header button[title="Clear history"] {
+  background-color: #f44336;
+}
+
+.history-widget .header button[title="Clear history"]:hover {
+  background-color: #d32f2f;
 }
